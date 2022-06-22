@@ -1,0 +1,91 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Penjualan Obat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>Detail Obat</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Nama Obat</ion-label>
+      <ion-note slot="end">{{data?.nama}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Merek</ion-label>
+      <ion-note slot="end">{{data?.merek}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Keterangan
+        <p>{{data?.keterangan}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>Detail Harga</ion-label>
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-label>Harga Satuan</ion-label>
+      <ion-note slot="end">{{data?.harga_jual_satuan | currency:'Rp.'}}</ion-note>
+    </ion-item>
+
+    <ion-row class="ion-align-items-center">
+      <ion-col size="auto" style="margin-left: 10px;">
+        Total Pembelian
+      </ion-col>
+      <ion-col size="7">
+        <ion-row class="ion-text-center ion-align-items-center" style="justify-content: end;">
+          <ion-col size="auto">
+            <ion-button (click)="subJumlah()" fill="outline" class="btn-action">
+              <ion-icon slot="icon-only" name="remove"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="5">
+            <ion-input [(ngModel)]="jumlah" class="input-total" (ionChange)="jumlahChange($event)" type="number" min="0"
+              max="10" readonly="true"></ion-input>
+          </ion-col>
+          <ion-col size="auto">
+            <ion-button (click)="addJumlah()" fill="outline" class="btn-action">
+              <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-list>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-row class="ion-align-items-center ion-margin-top">
+        <ion-col size="6" class="ion-text-bold ion-no-margin">
+          Total Harga
+        </ion-col>
+        <ion-col size="6">
+          <ion-row class="ion-text-center ion-align-items-center" style="justify-content: end;">
+            <ion-col size="12" class="ion-text-right ion-text-bold ion-no-margin">
+              {{totalHarga | currency:'Rp.'}}
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col size="12">
+          <ion-button [disabled]="jumlah == 0 || jumlah == '0'" (click)="onSend()" expand="block" fill="solid">
+            JUAL
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+
+
+</ion-content>

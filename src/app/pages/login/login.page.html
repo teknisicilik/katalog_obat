@@ -1,0 +1,25 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-textt-center">LOGIN</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-img src="../../../assets/icon.png"></ion-img>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="ion-padding-horizontal">
+    <ion-item>
+      <ion-label position="stacked">Username <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="username" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Password <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <ion-button color="primary" expand="block" type="submit" [disabled]="loginForm.invalid" class="ion-margin-vertical">
+      Login
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,66 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title> Transaksi </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <app-explore-container *ngIf="datas?.length < 1"></app-explore-container>
+
+  <ng-container *ngIf="loading">
+    <ion-card *ngFor="let s of skeletons">
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-row class="ion-no-margin ion-no-padding">
+            <ion-col size="6" class="ion-text-left ion-no-margin ion-no-padding">
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right ion-no-margin ion-no-padding">
+              <ion-skeleton-text animated style="width: 30%; float: right"></ion-skeleton-text>
+            </ion-col>
+          </ion-row>
+        </ion-card-subtitle>
+        <ion-card-title>
+          <ion-label>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="!loading">
+    <ion-card *ngFor="let data of datas">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-label>
+            {{data?.nama}}
+            <p>
+              <ion-row class="ion-no-margin ion-no-padding">
+                <ion-col size="6" class="ion-no-margin ion-no-padding ion-text-left"> {{data?.total_harga |
+                  currency:'Rp.'}} </ion-col>
+                <ion-col size="6" class="ion-no-margin ion-no-padding ion-text-right">
+                  <span>{{data?.jumlah}}</span>X
+                </ion-col>
+              </ion-row>
+            </p>
+            <p>{{data?.tanggal | date:'fullDate'}}</p>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-chip color="primary" mode="md" outline="false" *ngFor="let c of data?.kategoris">
+          <ion-label>{{c?.nama}}</ion-label>
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+
+</ion-content>

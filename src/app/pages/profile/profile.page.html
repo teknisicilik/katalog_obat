@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="wrapper">
+
+    <ion-text color="dark-text">
+      <h5 class="ion-text-bold ion-text-center">{{profile?.username}}</h5>
+    </ion-text>
+
+    <ion-list>
+      <ion-item lines="none" class="main-item">
+        <ion-icon name="at-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <p>Username</p>
+          {{profile?.username ? profile?.username : '-'}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none" class="main-item">
+        <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <p>Alamat Email</p>
+          {{profile?.email ? profile?.email : '-'}}
+        </ion-label>
+      </ion-item>
+
+      <ion-button color="danger" type="submit" expand="block"
+        class="ion-margin-vertical ion-padding-horizontal ion-no-shadow" (click)="logOut()">
+        <p>Logout</p>
+      </ion-button>
+
+    </ion-list>
+  </ion-list>
+</ion-content>

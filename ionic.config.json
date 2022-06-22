@@ -1,0 +1,7 @@
+{
+  "name": "katalog_obat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

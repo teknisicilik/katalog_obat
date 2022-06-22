@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Apotek Jamus</string>
+    <string name="title_activity_main">Apotek Jamus</string>
+    <string name="package_name">katalogobat.teknisicilik.com</string>
+    <string name="custom_url_scheme">katalogobat.teknisicilik.com</string>
+</resources>
